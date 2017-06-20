@@ -1,3 +1,7 @@
+//reference: on blogger
+   //firebase: callback n promises
+   //firebase: setup 
+
 //describe("f1", function(){});
 
 // Initialize Firebase
