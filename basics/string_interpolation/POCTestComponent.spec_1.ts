@@ -21,6 +21,8 @@ import { POCTestComponent } from 'app/POCs/string_interpolation/POCTestComponent
 5.
     fixture.nativeElement    //returns <html> which is root of our template
     fixture.debugElement     //wrapper around nativeElement. gives us useful methods to query the DOM. 
+       > fixture.debugElement.query(Predicate), fixture.debugElement.queryAll(Predicate)
+               - predicate is a function which returns true when a condition is met. 
 - using fixture, we can also run change detection manually.
     fixture.detectChanges()
 
@@ -35,6 +37,13 @@ the first one is with async() and .configureTestingModule .... .compileComponent
                 block. The async beforeEach-block would now be empty. get rid of it .
    pt.#6. is just to show how the auto-generated code is different from the code previously. 
 
+7.
+   import {By} from '@angular/platform-browser'; 
+     - By.css('.someclassname') //returns 1st element that matches the predicate-condition. 
+     - By.directive('...') //used for custom-directive.   
+     By is used along with  fixture.debugElement.query(Predicate). By is the predicate.
+     eg. 
+        fixture.debugElement.query(By.css('.somecssclassname'));
 */
 
 let component: POCTestComponent;
