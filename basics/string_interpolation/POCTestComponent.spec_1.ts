@@ -21,7 +21,19 @@ import { POCTestComponent } from 'app/POCs/string_interpolation/POCTestComponent
 5.
     fixture.nativeElement    //returns <html> which is root of our template
     fixture.debugElement     //wrapper around nativeElement. gives us useful methods to query the DOM. 
-    - using fixture, we can also run change detection manually.
+- using fixture, we can also run change detection manually.
+    fixture.detectChanges()
+
+6. when u generate a component automatically, it creates 2 beforeEach blocks.
+the first one is with async() and .configureTestingModule .... .compileComponents()
+        - .compileComponents() is because it is compiling the html template which is in a separate file.
+          > but this is unnecessary becoz webpack keeps all template code n js code in one file.
+        - the async function is an utility function of angular. 
+                - it takes another function as an argument 
+                - launches it async-ly
+        - remove .compileComponents() from previous block and move the .configureTestingModule into the 2nd 
+                block. The async beforeEach-block would now be empty. get rid of it .
+   pt.#6. is just to show how the auto-generated code is different from the code previously. 
 
 */
 
